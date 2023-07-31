@@ -10,7 +10,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 
 
-const LoginModal = ({setshowAddProductModal,setshowLoginModal,}) => {
+const LoginModal = ({setshowAddProductModal,setshowLoginModal, onLogin}) => {
     const [email,setemail]=useState("")
     const [password,setPassword]=useState("")
 
@@ -33,6 +33,9 @@ const LoginModal = ({setshowAddProductModal,setshowLoginModal,}) => {
                 localStorage.setItem('jwtToken', token);
                 setshowLoginModal(false)
                 setshowAddProductModal(true)
+                if (onLogin) {
+                    onLogin();
+                  }
                 console.log(res.data)}
             })
             .catch((err)=>{
@@ -63,7 +66,7 @@ const LoginModal = ({setshowAddProductModal,setshowLoginModal,}) => {
   );
 };
 
-const SignUpModal = ({handleLoginModalClick , setshowAddProductModal ,setshowSignupModal}) => {
+const SignUpModal = ({handleLoginModalClick , setshowAddProductModal ,setshowSignupModal, setIsLoggedIn}) => {
     const [formData, setFormData] = useState({
         Name: '',
         email: '',
@@ -93,6 +96,7 @@ const SignUpModal = ({handleLoginModalClick , setshowAddProductModal ,setshowSig
                     localStorage.setItem('jwtToken', token);
                     setshowSignupModal(false)
                     setshowAddProductModal(true)
+                    setIsLoggedIn(true);
                     console.log(res.data)
             })
         }
