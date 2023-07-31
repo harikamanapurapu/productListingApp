@@ -64,6 +64,9 @@ const ProductList=()=>{
         setshowSignupModal(false)
         setshowLoginModal(true)
     }
+    const handleLogin = () => {
+      setIsLoggedIn(true);
+    };
 
 
     const [products, setproducts] = useState([]);
@@ -244,8 +247,8 @@ const ProductList=()=>{
                     ))}
                 </div>
                 {showAddProductModal && <AddproductModal setshowAddProductModal={setshowAddProductModal} editProduct={editProduct} onAddProductSuccess={handleAddProductSuccess} onEditProductSuccess={handleEditProductSuccess}/>}
-                {showSignupModal && <SignUpModal handleLoginModalClick={handleLoginModalClick} setshowAddProductModal={setshowAddProductModal} setshowSignupModal={setshowSignupModal}/>}
-                {showLoginModal && <LoginModal  setshowAddProductModal={setshowAddProductModal} setshowLoginModal={setshowLoginModal}/>}
+                {showSignupModal && <SignUpModal handleLoginModalClick={handleLoginModalClick} setshowAddProductModal={setshowAddProductModal} setshowSignupModal={setshowSignupModal} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>}
+                {showLoginModal && <LoginModal  setshowAddProductModal={setshowAddProductModal} setshowLoginModal={setshowLoginModal} onLogin={handleLogin} isLoggedIn={isLoggedIn}/>}
             </div>
         </div>
     </div>
