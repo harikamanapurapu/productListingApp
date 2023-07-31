@@ -167,7 +167,7 @@ const ProductList=()=>{
                         <select className='sortSelect' id='sorting' onChange={(e) => setSortBy(e.target.value)}>
                             <option className='sortby' value=" ">Sort by</option>
                             <option className='upvotes' value='upvotes'>Upvotes</option>
-                            <option className='comments' value={comments}>Comments</option>
+                            <option className='comments' value='comments'>Comments</option>
                         </select>
                     </div>
                     <button className='addproduct' onClick={handleAddProductClick}>+Add product</button>
