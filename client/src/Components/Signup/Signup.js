@@ -37,12 +37,12 @@ const Signup=()=>{
             return false;
           }
         try{
-            await axios.post("http://localhost:4000/signup",formData)
+            await axios.post("https://product-api-nun3.onrender.com/signup",formData)
             .then((res)=>{
                     const token  = res.data.jwtToken;
                     // Store the JWT token in local storage
                     localStorage.setItem('jwtToken', token);
-                    navigate('/')
+                    navigate('/productListingApp')
                     console.log(res.data)
             })
         }
