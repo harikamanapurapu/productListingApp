@@ -28,13 +28,13 @@ const Login=()=>{
     async function handleSubmitLogin(e){
         e.preventDefault();
         const credentials={email,password};
-        await axios.post("http://localhost:4000/login",credentials)
+        await axios.post("https://product-api-nun3.onrender.com/login",credentials)
             .then((res)=>{
                 if(email!=="" && password!==""){
                 const token  = res.data.jwtToken;
                 // Store the JWT token in local storage
                 localStorage.setItem('jwtToken', token);
-                navigate('/')
+                navigate('/productListingApp')
                 console.log(res.data)}
             })
             .catch((err)=>{
