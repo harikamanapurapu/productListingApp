@@ -25,7 +25,7 @@ const LoginModal = ({setshowAddProductModal,setshowLoginModal }) => {
     async function handleSubmitLogin(e){
         e.preventDefault();
         const credentials={email,password};
-        await axios.post("http://localhost:4000/login",credentials)
+        await axios.post("https://product-api-nun3.onrender.com/login",credentials)
             .then((res)=>{
                 if(email!=="" && password!==""){
                 const token  = res.data.jwtToken;
@@ -86,7 +86,7 @@ const SignUpModal = ({handleLoginModalClick , setshowAddProductModal ,setshowSig
             return false;
           }
         try{
-            await axios.post("http://localhost:4000/signup",formData)
+            await axios.post("https://product-api-nun3.onrender.com/signup",formData)
             .then((res)=>{
                     const token  = res.data.jwtToken;
                     // Store the JWT token in local storage
@@ -185,7 +185,7 @@ const AddproductModal = ({setshowAddProductModal,editProduct}) => {
             // Optionally, show a success message or perform any other actions after successful update
           } else {
             // If editProduct is null, it means we are adding a new product
-            await axios.post("http://localhost:4000/Addproduct", ProductformData);
+            await axios.post("https://product-api-nun3.onrender.com/Addproduct", ProductformData);
           }
       
           // Close the modal after successful submission
