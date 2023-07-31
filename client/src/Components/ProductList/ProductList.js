@@ -56,7 +56,7 @@ const ProductList=()=>{
 
     const fetchProducts = async () => {
         try {
-          const response = await axios.get('http://localhost:4000/Viewproducts');
+          const response = await axios.get('https://product-api-nun3.onrender.com/Viewproducts');
           const uniqueCategories = Array.from(new Set(response.data.map((product) => product.category)));
           setCategories(uniqueCategories);
 
@@ -103,7 +103,7 @@ const ProductList=()=>{
         const newCommentText = comments[productId];
         if (newCommentText && newCommentText.trim() !== '') {
           try {
-            await axios.patch(`http://localhost:4000/CommentProduct/${productId}`, { text: newCommentText });
+            await axios.patch(`https://product-api-nun3.onrender.com/CommentProduct/${productId}`, { text: newCommentText });
             // Clear the comment input and refresh the product list after posting the comment
             setComments((prev) => ({ ...prev, [productId]: '' }));
             fetchProducts();
@@ -116,7 +116,7 @@ const ProductList=()=>{
     const handleUpvote = async (productId) => {
         try {
           // Make a PATCH request to update the upvotes field in the database
-          await axios.patch(`http://localhost:4000/UpvoteProduct/${productId}`);
+          await axios.patch(`https://product-api-nun3.onrender.com/UpvoteProduct/${productId}`);
           // Refresh the product list after upvoting
           fetchProducts();
         } catch (error) {
