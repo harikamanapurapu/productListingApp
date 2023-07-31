@@ -10,7 +10,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 
 
-const LoginModal = ({setshowAddProductModal,setshowLoginModal }) => {
+const LoginModal = ({setshowAddProductModal,setshowLoginModal,}) => {
     const [email,setemail]=useState("")
     const [password,setPassword]=useState("")
 
@@ -134,7 +134,7 @@ const SignUpModal = ({handleLoginModalClick , setshowAddProductModal ,setshowSig
 };
 
 
-const AddproductModal = ({setshowAddProductModal,editProduct}) => {
+const AddproductModal = ({setshowAddProductModal,editProduct, onAddProductSuccess, onEditProductSuccess}) => {
 
 
 
@@ -180,12 +180,18 @@ const AddproductModal = ({setshowAddProductModal,editProduct}) => {
           if (editProduct) {
             // If editProduct is not null, it means we are updating an existing product
             // Perform a PATCH request with the updated product data
-            const response = await axios.patch(`http://localhost:4000/Editproduct/${editProduct._id}`, ProductformData);
+            const response = await axios.patch(`https://product-api-nun3.onrender.com/Editproduct/${editProduct._id}`, ProductformData);
             console.log(response.data);
+            if (onEditProductSuccess) {
+                onEditProductSuccess();
+              }
             // Optionally, show a success message or perform any other actions after successful update
           } else {
             // If editProduct is null, it means we are adding a new product
             await axios.post("https://product-api-nun3.onrender.com/Addproduct", ProductformData);
+            if (onAddProductSuccess) {
+                onAddProductSuccess();
+              }
           }
       
           // Close the modal after successful submission
