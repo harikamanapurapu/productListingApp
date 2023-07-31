@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/productListingApp/static/css/main.cc4596fc.css",
-    "main.js": "/productListingApp/static/js/main.8c724007.js",
+    "main.js": "/productListingApp/static/js/main.5bea4d71.js",
     "static/media/Roboto-Regular.ttf": "/productListingApp/static/media/Roboto-Regular.160d7a6ac26376e5e977.ttf",
     "static/media/display.png": "/productListingApp/static/media/display.1097178df3957594d505.png",
     "static/media/DMSans-Regular.ttf": "/productListingApp/static/media/DMSans-Regular.aae18ae4c7505bc987ab.ttf",
     "index.html": "/productListingApp/index.html",
     "main.cc4596fc.css.map": "/productListingApp/static/css/main.cc4596fc.css.map",
-    "main.8c724007.js.map": "/productListingApp/static/js/main.8c724007.js.map"
+    "main.5bea4d71.js.map": "/productListingApp/static/js/main.5bea4d71.js.map"
   },
   "entrypoints": [
     "static/css/main.cc4596fc.css",
-    "static/js/main.8c724007.js"
+    "static/js/main.5bea4d71.js"
   ]
 }
