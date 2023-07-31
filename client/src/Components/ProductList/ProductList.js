@@ -10,6 +10,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import enter from '../assets/enter.png'
 import commentImg from '../assets/comments.png'
+import { fetchproducts } from '../api';
 
 
 
@@ -38,6 +39,25 @@ const ProductList=()=>{
         } else {
           setshowSignupModal(true);
         }
+      };
+
+      const handleAddProductSuccess = () => {
+        setshowAddProductModal(false);
+        // Fetch the products again to include the newly added product
+        fetchproducts().then((data) => {
+          setproducts(data);
+          setFilteredProductCount(data.length);
+        });
+      };
+
+      const handleEditProductSuccess = () => {
+        setshowAddProductModal(false);
+        // Fetch the products again to include the updated product
+        fetchproducts().then((data) => {
+          setproducts(data);
+          // Update the filtered product count as well
+          setFilteredProductCount(data.length);
+        });
       };
 
     const handleLoginModalClick=()=>{
@@ -166,8 +186,8 @@ const ProductList=()=>{
                         <label htmlFor='sorting' className='sortHeading'>Sort by :</label>
                         <select className='sortSelect' id='sorting' onChange={(e) => setSortBy(e.target.value)}>
                             <option className='sortby' value=" ">Sort by</option>
-                            <option className='upvotes' value='upvotes'>Upvotes</option>
-                            <option className='comments' value='comments'>Comments</option>
+                            <option className='upvotes' value="upvotes">Upvotes</option>
+                            <option className='comments' value="comments">Comments</option>
                         </select>
                     </div>
                     <button className='addproduct' onClick={handleAddProductClick}>+Add product</button>
@@ -223,7 +243,7 @@ const ProductList=()=>{
                     </div>
                     ))}
                 </div>
-                {showAddProductModal && <AddproductModal setshowAddProductModal={setshowAddProductModal} editProduct={editProduct}/>}
+                {showAddProductModal && <AddproductModal setshowAddProductModal={setshowAddProductModal} editProduct={editProduct} onAddProductSuccess={handleAddProductSuccess} onEditProductSuccess={handleEditProductSuccess}/>}
                 {showSignupModal && <SignUpModal handleLoginModalClick={handleLoginModalClick} setshowAddProductModal={setshowAddProductModal} setshowSignupModal={setshowSignupModal}/>}
                 {showLoginModal && <LoginModal  setshowAddProductModal={setshowAddProductModal} setshowLoginModal={setshowLoginModal}/>}
             </div>
